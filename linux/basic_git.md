@@ -41,6 +41,9 @@ A file mainted by Git that contains all of the information about what files and 
 ### Untracked Files
 Files inside the repository that have never been commited have the status **Untracked**.
 
+### Head 
+HEAD is the latest commit in the project. It works as a bookmark of where you left of. Is also a pointer to the current branch. "The currently checked-out snapshot of your project."
+
 
 ## Basic Git Commands
 
@@ -65,12 +68,115 @@ To see check Working Tree status:
 To commit the changes to be commited:
 ``` bash
     git commit #a text editor will open to to write the commit message
-    git commit -m 'commit message' will commit directly
+    git commit -m 'commit message' #will commit directly
 ``` 
 
+To print the changes made to the repository:
+``` bash
+    git log
+```
 
+To commit skipping the staging area (works only for tracked files):
+```bash
+git commit -a (-m) #shortcut to stage any changes to tracked files and commit them in one step #the -m flag is optional, to commit the commit message directly as well.
+```
 
+To print more information about a specific commit:
+``` bash
+    git show git_id
+```
 
+To print more information about all commits:
+``` bash
+    git log --stat
+```
 
+To print the diff between the current file on the repository and the one being commited:
+``` bash
+    git diff
+    git add -p #will show the changes and confirm before commit
+```
 
+To remove a file from the repository and untrack it:
+``` bash
+    git rm
+```
 
+To rename or move a file on the repository:
+``` bash
+    git mv
+```
+
+To ignore files in 
+``` bash
+    git rm
+```
+
+## Commit Message
+
+Should be a short descriprion of the change (up to 50 characters), followed by one or more paragraphs giving more details of the change (if needed).
+
+## Commands to Undo Changes
+
+To undo changes to modified, unstaged files: 
+``` bash
+    git checkout
+```
+
+To undo changes to modified, staged files: 
+``` bash
+    git reset HEAD
+```
+
+To overwrite the previous commit:
+``` bash
+    git add #do whatever was missing/wrong
+    git commit -amend #not use on public repositories!!!
+```
+
+To rollback a commit:
+``` bash
+    git revert HEAD #revert the latest commit
+    git revert commit_id #revert to the specified commit
+```
+
+## Working with Branches
+
+To list all existing branches:
+``` bash
+    git branch
+```
+
+To create a new branch:
+``` bash
+    git branch new-branch 
+```
+
+To switch to a new branch:
+``` bash
+    git checkout new-branch
+```
+
+To create a new branch and switch to it:
+``` bash
+    git ch  eckout -b new-feature
+```
+
+To delete a branch:
+``` bash
+    git branch -d new-feature
+```
+
+### Merging
+Term that Git uses for combining branched data and history together. Git uses two different algorithms to perform a merge: fast-forward and three-way merge.
+
+To merge a branch to master:
+``` bash
+    git branch new-feature
+```
+
+The stop the merge:
+To delete a branch:
+``` bash
+    git merge --abort
+```
